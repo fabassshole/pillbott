@@ -3,6 +3,12 @@ import sqlite3
 import logging
 import pytz
 import re
+import os
+
+API_TOKEN = os.getenv('BOT_TOKEN', 'не_нашел_токен') # берем из системы или пишем текст ошибки
+print(f"DEBUG: Текущий токен начинается на: {API_TOKEN[:5]}...") # выведет первые 5 символов в логи
+
+bot = Bot(token=API_TOKEN)
 from datetime import datetime, timedelta
 from aiogram import Bot, Dispatcher, types, F
 from aiogram.filters import Command
@@ -462,5 +468,6 @@ async def main():
         
     except Exception as e:
         print(f"❌ ОШИБКА ЗАПУСКА: {e}")
+
 
         
