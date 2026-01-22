@@ -4,6 +4,7 @@ import logging
 import pytz
 import re
 import os
+from aiogram import Bot, Dispatcher, types, F  # <--- ВОТ ЭТА СТРОКА ОБЯЗАТЕЛЬНА
 import dotenv
 print("Успешно!")
 
@@ -474,4 +475,5 @@ async def main():
 
 
         
+
 
