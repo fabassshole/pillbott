@@ -1,6 +1,3 @@
 aiogram
 apscheduler
-pytz=22.1
-
-
-
+pytz
