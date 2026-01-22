@@ -4,6 +4,9 @@ import logging
 import pytz
 import re
 import os
+import dotenv
+print("Успешно!")
+
 
 API_TOKEN = os.getenv('BOT_TOKEN', 'не_нашел_токен') # берем из системы или пишем текст ошибки
 print(f"DEBUG: Текущий токен начинается на: {API_TOKEN[:5]}...") # выведет первые 5 символов в логи
@@ -471,3 +474,4 @@ async def main():
 
 
         
+
