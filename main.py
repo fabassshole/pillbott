@@ -22,7 +22,6 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder, ReplyKeyboardBuilder
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
 # --- НАСТРОЙКИ ---
-import os
 
 # Бот будет брать токен из настроек сервера
 API_TOKEN = os.getenv('BOT_TOKEN')
@@ -474,6 +473,7 @@ async def main():
 
 
         
+
 
 
 
