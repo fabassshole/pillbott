@@ -4,14 +4,6 @@ import logging
 import pytz
 import re
 import os
-import dotenv
-print("Успешно!")
-
-
-API_TOKEN = os.getenv('BOT_TOKEN', 'не_нашел_токен') # берем из системы или пишем текст ошибки
-print(f"DEBUG: Текущий токен начинается на: {API_TOKEN[:5]}...") # выведет первые 5 символов в логи
-
-bot = Bot(token=API_TOKEN)
 from datetime import datetime, timedelta
 from aiogram import Bot, Dispatcher, types, F
 from aiogram.filters import Command
@@ -21,13 +13,20 @@ from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.utils.keyboard import InlineKeyboardBuilder, ReplyKeyboardBuilder
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
-# --- НАСТРОЙКИ ---
+# --- НАСТРОЙКИ И ОБЪЕКТЫ ---
+# Сначала получаем токен
+API_TOKEN = os.getenv('BOT_TOKEN', '8334298053:AAFUlE-2oK3zRuJJkPC8VY7jRNSa-6KVZ2Q')
 
-# Бот будет брать токен из настроек сервера
-API_TOKEN = os.getenv('BOT_TOKEN')
+# ТЕПЕРЬ создаем объекты бота и диспетчера (ВАЖНО: именно в таком порядке)
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(storage=MemoryStorage())
+
+# И только потом планировщик, который может использовать bot
 scheduler = AsyncIOScheduler(timezone="Europe/Moscow")
+
+# Путь к базе данных (чтобы она не терялась на сервере)
+BASE_DIR = os.path.dirname(os.path.abspath(file))
+DB_PATH = os.path.join(BASE_DIR, 'pills.db')
 
 WEEKDAYS = {0: "пн", 1: "вт", 2: "ср", 3: "чт", 4: "пт", 5: "сб", 6: "вс"}
 
@@ -473,6 +472,7 @@ async def main():
 
 
         
+
 
 
 
