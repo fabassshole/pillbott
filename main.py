@@ -28,7 +28,7 @@ import os
 API_TOKEN = os.getenv('BOT_TOKEN')
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(storage=MemoryStorage())
-scheduler = AsyncIOScheduler()
+scheduler = AsyncIOScheduler(timezone="Europe/Moscow")
 
 WEEKDAYS = {0: "пн", 1: "вт", 2: "ср", 3: "чт", 4: "пт", 5: "сб", 6: "вс"}
 
@@ -474,6 +474,7 @@ async def main():
 
 
         
+
 
 
 
